@@ -22,7 +22,7 @@ build:
     - docker push $CI_REGISTRY_IMAGE:latest
 
 variables:
-    APP_NAME: react-demo-ds2020
+    APP_NAME: springappfrontenddocker2
     
 deploy:
   image: docker:latest
