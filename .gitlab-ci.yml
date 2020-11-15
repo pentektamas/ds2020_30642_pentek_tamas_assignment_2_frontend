@@ -30,7 +30,7 @@ deploy:
     - docker:dind
   stage: deploy
   only:
-    - docker_production
+    - docker-production
   script:
     - docker login --username=_ --password=$HEROKU_API_KEY $HEROKU_REGISTRY
     - docker pull $CI_REGISTRY_IMAGE:latest
