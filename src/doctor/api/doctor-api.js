@@ -10,6 +10,7 @@ const endpoint = {
 function getPersons(callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor, {
         method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
     console.log(request.url);
     RestApiClient.performRequest(request, callback);
@@ -18,6 +19,7 @@ function getPersons(callback) {
 function getPatients(callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor + "patients", {
         method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
     console.log(request.url);
     RestApiClient.performRequest(request, callback);
@@ -25,7 +27,8 @@ function getPatients(callback) {
 
 function getPatientById(patientId, callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor + endpoint.patient + patientId, {
-        method: 'GET'
+        method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
 
     console.log(request.url);
@@ -38,6 +41,7 @@ function insertPatient(patient, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(patient)
     });
@@ -52,6 +56,7 @@ function updatePatient(patient, id, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(patient)
     });
@@ -66,6 +71,7 @@ function deletePatient(patientID, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(patientID)
     });

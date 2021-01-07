@@ -39,29 +39,33 @@ class Login extends React.Component {
     }
 
     registerLogin(account) {
-        return API_LOGIN.postLogin(account, (result, status, error) => {
+        return API_LOGIN.doTheLogin(account, (result, status, error) => {
+            console.log("Am venit!")
+            console.log("Result is: " + result + "Status is: " + status);
             if (result !== null && (status === 200 || status === 201)) {
-                if (result.accountType === 'PATIENT') {
+                console.log("ROLE is: " + result.role);
+                console.log("ID is: " + result.id);
+                localStorage.setItem('JWTtoken', result.token);
+                if (result.role === 'PATIENT_ROLE') {
                     this.props.history.push({
                         pathname: '/patient',
                         state: {currentID: result.id}
                     });
                 }
 
-                if (result.accountType === 'CAREGIVER') {
+                if (result.role === 'CAREGIVER_ROLE') {
                     this.props.history.push({
                         pathname: '/caregiver',
                         state: {currentID: result.id}
                     });
                 }
 
-                if (result.accountType === 'DOCTOR') {
+                if (result.role === 'DOCTOR_ROLE') {
                     this.props.history.push({
                         pathname: '/doctor',
                         state: {currentID: result.id}
                     });
                 }
-
             } else {
                 alert("Invalid credentials");
             }

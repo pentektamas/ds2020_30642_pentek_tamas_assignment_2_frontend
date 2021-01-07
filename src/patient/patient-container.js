@@ -24,7 +24,10 @@ class PatientContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchPatient();
+        if (this.props.location.state === undefined) {
+            this.props.history.push("/error");
+        } else
+            this.fetchPatient();
     }
 
 

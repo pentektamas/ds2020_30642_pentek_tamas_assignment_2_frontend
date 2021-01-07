@@ -10,6 +10,7 @@ const endpoint = {
 function getCaregivers(callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor + "caregivers", {
         method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
     console.log(request.url);
     RestApiClient.performRequest(request, callback);
@@ -17,7 +18,8 @@ function getCaregivers(callback) {
 
 function getCaregiverById(caregiverId, callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor + endpoint.caregiver + caregiverId, {
-        method: 'GET'
+        method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
 
     console.log(request.url);
@@ -30,6 +32,7 @@ function insertCaregiver(caregiver, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(caregiver)
     });
@@ -44,6 +47,7 @@ function updateCaregiver(caregiver, id, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(caregiver)
     });
@@ -58,6 +62,7 @@ function deleteCaregiver(caregiverID, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(caregiverID)
     });

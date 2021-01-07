@@ -30,7 +30,10 @@ class CaregiverContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchCaregiver();
+        if (this.props.location.state === undefined) {
+            this.props.history.push("/error");
+        } else
+            this.fetchCaregiver();
     }
 
     getPatients() {

@@ -63,10 +63,17 @@ class DoctorContainer extends React.Component {
         };
     }
 
+
     componentDidMount() {
-        this.fetchPatients();
-        this.fetchCaregivers();
-        this.fetchMedications();
+        if(this.props.location.state === undefined){
+            this.props.history.push("/error");
+        }
+        else{
+            this.fetchPatients();
+            this.fetchCaregivers();
+            this.fetchMedications();
+        }
+
     }
 
     fetchPatients() {

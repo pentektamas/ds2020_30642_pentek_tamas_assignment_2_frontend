@@ -10,6 +10,7 @@ const endpoint = {
 function getMedications(callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor + "medications", {
         method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
     console.log(request.url);
     RestApiClient.performRequest(request, callback);
@@ -17,7 +18,8 @@ function getMedications(callback) {
 
 function getMedicationById(medicationId, callback) {
     let request = new Request(HOST.backend_api + endpoint.doctor + endpoint.medication + medicationId, {
-        method: 'GET'
+        method: 'GET',
+        headers: new Headers({'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),}),
     });
 
     console.log(request.url);
@@ -30,6 +32,7 @@ function insertMedication(medication, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(medication)
     });
@@ -44,6 +47,7 @@ function updateMedication(medication, id, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(medication)
     });
@@ -58,6 +62,7 @@ function deleteMedication(medicationID, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(medicationID)
     });

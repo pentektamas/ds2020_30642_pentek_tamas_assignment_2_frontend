@@ -14,6 +14,7 @@ function addMedicationPlan(medicationPlan, patientID, callback) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken'),
         },
         body: JSON.stringify(medicationPlan)
     });

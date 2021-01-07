@@ -6,15 +6,23 @@ const endpoint = {
     login: '/account/loginCredentials/'
 };
 
-
-function postLogin(account, callback) {
-    let request = new Request(HOST.backend_api + endpoint.login + account.userName + "/" + account.password, {
-        method: 'GET'
+function doTheLogin(account, callback) {
+    let request = new Request(HOST.backend_api + '/login', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(account)
     });
-    console.log("URL: " + request.url);
+
+    console.log("URL is : " + request.url);
     RestApiClient.performRequest(request, callback);
+    console.log("Daaa")
 }
 
+
+
 export {
-    postLogin,
+    doTheLogin,
 };
