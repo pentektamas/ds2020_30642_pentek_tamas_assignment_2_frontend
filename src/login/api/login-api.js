@@ -2,10 +2,6 @@ import {HOST} from '../../commons/hosts';
 import RestApiClient from "../../commons/api/rest-client";
 
 
-const endpoint = {
-    login: '/account/loginCredentials/'
-};
-
 function doTheLogin(account, callback) {
     let request = new Request(HOST.backend_api + '/login', {
         method: 'POST',
