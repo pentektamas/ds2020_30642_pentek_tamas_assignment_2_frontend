@@ -82,7 +82,9 @@ class CaregiverContainer extends React.Component {
 
     sendCurrentCaregiver = () => {
         console.log("SEND CURRENT CAREGIVER");
+        console.log("THIIIS: " + this.state.currentCaregiver.id);
         this.clientRef.sendMessage(HOST.backend_api + '/caregiverInfo', JSON.stringify({'caregiverID': this.state.currentCaregiver.id}));
+        console.log("SENTTT");
     }
 
 
