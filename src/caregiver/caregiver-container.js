@@ -130,7 +130,7 @@ class CaregiverContainer extends React.Component {
 
                 </Card>
 
-                <SockJsClient url={HOST.backend_api + '/caregiverWebsocket/'}
+                <SockJsClient url={HOST.backend_api + '/api/caregiverWebsocket/'}
                               topics={['/queue/caregiver']}
                               onConnect={() => {
                                   console.log("WebSocket connected");
